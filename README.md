@@ -5,17 +5,13 @@ About Top secret for first-year graduate student - 2025 🥷
 Welcome Event!
 
 
-## CTFd Platform
-
+## CTFd 平台
 
 http://140.124.181.143/
 
-
 ## Docker build
 
-
-Please upload the 'Dockerfile' required for the problem to this project first, and then the host will be unified to 140.124.181.143 and then assigned to different ports.
-
+請先把題目所需的 `Dockerfile` 上傳至這個專案，之後會統一 Host 到 140.124.181.143 然後配給不同的 Port。
 
 ## Question progress
 
