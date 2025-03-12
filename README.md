@@ -5,7 +5,7 @@ About Top secret for first-year graduate student - 2025 🥷
 Welcome Event!
 
 
-##CTFd Platform
+## CTFd Platform
 
 
 http://140.124.181.143/
