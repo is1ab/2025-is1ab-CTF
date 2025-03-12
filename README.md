@@ -24,4 +24,4 @@ http://140.124.181.143/
 | Reverse  |          |                                             |                          |      |      |      |
 | Crypto   |           |         |    |      |      |
 | Forensic |  |                            |    |       |      |      
-| Misc     |  |                            |    |       |      | 
+| Misc     | Try Harder [@CHW] |                            |    |       |      | 
