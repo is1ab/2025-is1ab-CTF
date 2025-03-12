@@ -6,7 +6,7 @@ Topic Description:
 
 **Difficulty:** Easy
 
-**Category:** Misc (OSINT + Forensic + Web?!)
+**Category:** Misc (OSINT + Forensic + ~~Web~~)
  
 ---
 (ENG)
