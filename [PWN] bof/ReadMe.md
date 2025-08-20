@@ -1,7 +1,5 @@
 # bof
 
-## 題目描述
-
 - **Author:** ypp
 - **Difficulty:** easy
 - **Category:** pwn
