@@ -16,12 +16,12 @@ http://140.124.181.143/
 ## Question progress
 
 
-|          | A                                 | B                                           | C                        | D    | E    | F    |
-| -------- | --------------------------------- | ------------------------------------------- | ------------------------ | ---- | ---- | ---- |
+|          | A | B | C | D | E | F |
+| --- | --- | --- | --- | --- | --- | --- |
 | General  |        |     |      |      |      |
-| Web      | BabyShell [@CHW]  |  BabyPentest [@CHW] |        |      |      |      |
-| Pun |             |                                             |                          |      |      |      |
-| Reverse  |          |                                             |                          |      |      |      |
-| Crypto   |           |         |    |      |      |
-| Forensic |  |                            |    |       |      |      
-| Misc     | Try Harder [@CHW] |                            |    |       |      | 
+| Web      | BabyShell [@CHW]  | BabyPentest [@CHW] | EasySQLi [@Paul] |      |      |      |
+| Pwn      | bof  | forfer [@ypp] | forferplus [@ypp] | memo [@ypp] | treasure [@ypp] | zero [@ypp] |
+| Reverse  | Basic Crackme [@Paul] |   |   |   |   |   |
+| Crypto   |   |   |   |   |   |
+| Forensic |   |   |   |   |   |
+| Misc     | Try Harder [@CHW] |   |   |   |   |
