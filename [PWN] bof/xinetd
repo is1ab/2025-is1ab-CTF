@@ -1,0 +1,12 @@
+service chal
+{
+    disable = no
+    type = UNLISTED
+    socket_type = stream
+    protocol = tcp
+    server = /home/chal/run.sh
+    user = chal
+    port = 40001
+    flags = REUSE
+    wait = no
+}
