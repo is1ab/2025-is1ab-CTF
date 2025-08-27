@@ -9,6 +9,16 @@ if (!isset($_SESSION['username'])) {
 $role = $_SESSION['role'];
 $username = $_SESSION['username'];
 
+// Rate Limiting Logic for professor's search
+if ($role === 'PROFESSOR' && $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['search_name'])) {
+    $rate_limit_seconds = 3;
+    if (isset($_SESSION['last_search_time']) && (time() - $_SESSION['last_search_time']) < $rate_limit_seconds) {
+        header("Location: rate_limit_error.php");
+        exit;
+    }
+    $_SESSION['last_search_time'] = time();
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="zh-TW">
@@ -46,7 +56,7 @@ $username = $_SESSION['username'];
         } elseif ($role === 'STUDENT') {
             include 'query_score/personal.php';
         } else {
-            echo "<div class='alert alert-info'>這是一個給訪客的笑話：為什麼科學家不相信原子？因為它們構成了所有東西！</div>";
+            echo "<div class='alert alert-info'>為什麼程式設計師常常分不清處萬聖節和聖誕節？<br>因為 OCT 31 = DEC 25</div>";
         }
         ?>
     </div>

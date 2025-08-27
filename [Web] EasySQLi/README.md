@@ -1,19 +1,30 @@
-# 題目
+# Installation
 
-## 元資料
+To deploy this CTF challenge by using Docker, please follow these steps:
 
-- 題目名稱: EasySQLi
-- 題目難度: easy
-- 題目類型: Web
-- Flag: `is1abCTF{$UcCE5sFu11y_L34KeD_$EcRET_D@7A}`
-- 是否需要給原始碼: 不給
+## Clone the repository
 
-## 題目描述
+```shell
+git clone <repository_url>
+cd "[Web] EasySQLi"
+```
 
-- **Author:** Paul
-- **Difficulty:** easy
-- **Category:** Web
+## Build the Docker image
 
----
+```shell
+docker build -t is1ab-easy-sqli-ctf .
+```
 
-Welcome to the Is1ab Grade Management System! This system is hiding a secret. The database holds sensitive data—can you find the hidden information?
+## Run the Docker container
+
+```shell
+docker run -d -p 8080:80 --name iis1ab-easy-sqli-ctf is1ab-easy-sqli-ctf
+```
+
+## Access the application
+
+Open your web browser and navigate to `http://localhost:8080` to access the EasySQLi CTF challenge.
+
+## 備註
+
+- 此題網頁內的 request 會有 3 秒一次的 rate limit 以搞人心態。
