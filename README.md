@@ -21,7 +21,7 @@ http://140.124.181.143/
 | General  |        |     |      |      |      |
 | Web      | BabyShell [@CHW]  | BabyPentest [@CHW] | EasySQLi [@Paul] |      |      |      |
 | Pwn      | bof [@ypp] | forfer [@ypp] | forferplus [@ypp] | memo [@ypp] | treasure [@ypp] | zero [@ypp] |
-| Reverse  | Basic Crackme [@Paul] |   |   |   |   |   |
+| Reverse  | Basic Crackme [@Paul] | Image Encryptor [@Paul] |   |   |   |   |
 | Crypto   |   |   |   |   |   |
 | Forensic |   |   |   |   |   |
 | Misc     | Try Harder [@CHW] | I love free music [@Guan4tou2]  |   |   |   |
