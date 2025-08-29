@@ -22,5 +22,6 @@ cd 404\ J0b\ B4nk/
 ```  
 ### Using docker build to deploy the application
 ```
-bash build-docker.sh
+docker build -t web_404_j0b_b4nk .
+docker run --name=web_404_j0b_b4nk --rm -p1337:1337 -it web_404_j0b_b4nk
 ```
