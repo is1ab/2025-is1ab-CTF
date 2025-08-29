@@ -19,7 +19,7 @@ http://140.124.181.143/
 |          | A | B | C | D | E | F |
 | --- | --- | --- | --- | --- | --- | --- |
 | General  |        |     |      |      |      |
-| Web      | BabyShell [@CHW]  | BabyPentest [@CHW] | EasySQLi [@Paul] |      |      |      |
+| Web      | BabyShell [@CHW]  | EasySQLi [@Paul] | BabyPentest [@CHW] |   404 J0b B4nk [@CHW]   |      |      |
 | Pwn      | bof [@ypp] | forfer [@ypp] | forferplus [@ypp] | memo [@ypp] | treasure [@ypp] | zero [@ypp] |
 | Reverse  | Basic Crackme [@Paul] | Image Encryptor [@Paul] |   |   |   |   |
 | Crypto   |   |   |   |   |   |
