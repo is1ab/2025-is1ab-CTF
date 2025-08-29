@@ -24,4 +24,4 @@ http://140.124.181.143/
 | Reverse  | Basic Crackme [@Paul] | Image Encryptor [@Paul] |   |   |   |   |
 | Crypto   |   |   |   |   |   |
 | Forensic |   |   |   |   |   |
-| Misc     | Try Harder [@CHW] | I love free music [@Guan4tou2]  |   |   |   |
+| Misc     | Try Harder [@CHW] | I love free music [@Guan4tou2]  | 哪傻X出這啥題阿[@Win] |   |   |
