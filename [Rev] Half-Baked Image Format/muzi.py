@@ -80,7 +80,7 @@ def start_conv():
             write.append(wa)
 
     for i in range(h): 
-        dat = [b'\x44',b'\x41',b'\x54',b'\x42'  ]
+        dat = [b'\x44',b'\x41',b'\x54',b'\x42']
         for j in range(w):
             dat.append(img.getpixel((j,i))[2].to_bytes(1))
         dat.append(getCheck(dat[4:]))
