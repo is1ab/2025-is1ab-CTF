@@ -1,0 +1,27 @@
+.team-member {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.team-member img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.colorful-section {
+  background-color: #f8f9fa;
+  padding: 50px 0;
+}
+
+.gradient {
+  background: linear-gradient(to right, #2196f3, #33e1f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+hr {
+  opacity: 0.1;
+}
