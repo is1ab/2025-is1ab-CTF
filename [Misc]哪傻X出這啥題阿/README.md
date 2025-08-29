@@ -19,6 +19,7 @@
 二十六卷課題已列，皆為前人所載。
 知識非紙墨，而藏於協定、漏洞之間。
 能破者，當可組合旗幟，於無聲之處得其真章。
+<img src="https://pixhost.to/show/8306/635862226_islabctf.png" alt="is1abCTF" width="400">
 
 flag: is1abCTF{TO_INFINITY_AND_BEYOND}
 原始碼: 無 
