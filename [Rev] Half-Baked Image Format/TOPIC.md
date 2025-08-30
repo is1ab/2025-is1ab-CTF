@@ -1,5 +1,5 @@
 **Author:** WIFI
-**Difficulty:** Baby
+**Difficulty:** Easy
 **Category:** Reverse
  
 ---
