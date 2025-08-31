@@ -1,4 +1,4 @@
-**Author:** Adb2
+**Author:** Adb2 & nyanfox
 **Difficulty:** Hard
 **Category:** Reverse
  
