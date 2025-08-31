@@ -21,7 +21,7 @@ http://140.124.181.143/
 | General  |        |     |      |      |      |
 | Web      | BabyShell [@CHW]  | EasySQLi [@Paul] | BabyPentest [@CHW] |   404 J0b B4nk [@CHW]   |      |      |
 | Pwn      | bof [@ypp] | forfer [@ypp] | forferplus [@ypp] | memo [@ypp] | treasure [@ypp] | zero [@ypp] |
-| Reverse  | Basic Crackme [@Paul] | Image Encryptor [@Paul] | Half-Baked Image Format [@WIFI] | Cat the Flag [@Adb2]  |   |   |
+| Reverse  | Basic Crackme [@Paul] | Image Encryptor [@Paul] | Half-Baked Image Format [@WIFI] | Cat the Flag [@Adb2]  | Eating some binary 🦄 [@Adb2] | Baby Reverse [@Adb2]  |
 | Crypto   |   |   |   |   |   |
 | Forensic |   |   |   |   |   |
 | Misc     | Try Harder [@CHW] | I love free music [@Guan4tou2]  | 哪傻X出這啥題阿[@Win] |   |   |
