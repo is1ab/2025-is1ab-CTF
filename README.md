@@ -24,4 +24,4 @@ http://140.124.181.143/
 | Reverse  | Basic Crackme [@Paul] | Image Encryptor [@Paul] | Half-Baked Image Format [@WIFI] | Cat the Flag [@Adb2]  | Eating some binary 🦄 [@Adb2] | Baby Reverse [@Adb2]  |
 | Crypto   |   |   |   |   |   |
 | Forensic |   |   |   |   |   |
-| Misc     | Try Harder [@CHW] | I love free music [@Guan4tou2]  | 哪傻X出這啥題阿[@Win] |   |   |
+| Misc     | Try Harder [@CHW] | I love free music [@Guan4tou2]  | 哪傻X出這啥題阿[@Win] | Information Security [@HeyMrSalt] |   |
