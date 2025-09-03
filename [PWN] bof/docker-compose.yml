@@ -1,10 +1,27 @@
-version: '3'
-
 services:
   chal:
     build: ./
-    volumes:
-      - ./share:/home/chal:ro
-      - ./xinetd:/etc/xinetd.d/chal:ro
-    ports:
-      - "40001:40001"
+    expose:
+      - 40001
+    environment:
+      - FLAG # 若需要動態 flag 則不要覆值
+      # - FLAG=flag{this_is_default_flag} # 若需要固定 flag 則覆值
+      # - GZCTF_FLAG=flag{....} # GZCTF為 GZCTF_FLAG
+
+# 可依據需求自行更改 expose port
+# 下面不需要修改
+  services:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    expose:
+      - 9000
+    networks:
+      - default
+      - net
+
+networks:
+  default:
+  net:
+    external: true 
+    name: ctfd_frp_containers

@@ -8,5 +8,6 @@ service chal
     user = chal
     port = 40001
     flags = REUSE
+    bind = 0.0.0.0
     wait = no
 }
