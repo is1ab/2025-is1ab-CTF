@@ -2,6 +2,8 @@
 # SPDX-License-Identifier: MIT
 # Note: This module provides verification helpers only. Signing, nonce generation,
 # key derivation, and recovery routines are intentionally out of scope.
+# Scope: verification helpers only. Signing, nonce generation, key recovery, and attack demonstrations are explicitly out of scope per project policy.
+# References: SEC 1 v2 §4.1.4, SEC 2 v2 (domain parameters).
 
 # Implementation notes:
 # - Domain params follow SEC 2 v2.
