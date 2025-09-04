@@ -1,11 +1,13 @@
 #!/bin/bash
-# 建兩分割區（FAT16），公開區放 README，隱藏區只放 tar.gz（內含 flag 文本）
+# Create two partitions (FAT16):
+#   - Public partition: contains only README
+#   - Hidden partition: contains only a tar.gz (with the flag text inside)
 set -euo pipefail
 
 IMG=file_stealer.img
 SECTOR=512
 
-# 幾何參數
+# Geometry parameters
 P1_START=2048       # 1MiB
 P1_SIZE=65536       # 32MiB
 P2_START=67584      # 33MiB
@@ -13,15 +15,15 @@ P2_SIZE=61440       # 30MiB
 
 FLAG_CONTENT='is1abCTF{h1dd3n_p4rt1t10n_1s_4w3s0m3}'
 
-# 需求工具
+# Required tools
 for c in dd parted losetup mkfs.vfat mount umount tar gzip; do
-  command -v "$c" >/dev/null || { echo "[-] 缺少 $c"; exit 1; }
+  command -v "$c" >/dev/null || { echo "[-] Missing $c"; exit 1; }
 done
 
-# 建立映像
+# Create blank image
 dd if=/dev/zero of="$IMG" bs=1M count=64 status=none
 
-# 建 MBR + 分割區（FAT16，第二顆 hidden）
+# Create MBR + partitions (FAT16, second partition marked hidden)
 parted -s "$IMG" mklabel msdos
 parted -s "$IMG" mkpart primary fat16 1MiB 33MiB
 parted -s "$IMG" mkpart primary fat16 33MiB 63MiB
@@ -39,24 +41,25 @@ cleanup() {
 }
 trap cleanup EXIT
 
-# p1（公開）
+# Partition 1 (Public)
 LOOP1=$(losetup -f --show --offset $((P1_START*SECTOR)) --sizelimit $((P1_SIZE*SECTOR)) "$IMG")
 mkfs.vfat -F 16 -n PUBLIC "$LOOP1" >/dev/null
 mount "$LOOP1" /mnt/ctf
-echo "Public area. Nothing interesting here." > /mnt/ctf/readme.txt
+echo -e "Public area. Nothing interesting here.\nBut you might need this later: 'is1ab'." > /mnt/ctf/readme.txt
 sync; umount /mnt/ctf; losetup -d "$LOOP1"; LOOP1=""
 
-# 準備 tar.gz（内部檔名避免出現 'flag' 字樣）
+# Prepare tar.gz (internal filename avoids the word 'flag')
 echo "$FLAG_CONTENT" > "$TMPDIR/doc.txt"
-# -C 切換工作目錄，避免把路徑打包進去；-z 使用 gzip
+# -C changes working directory to avoid packing full paths; -z enables gzip
 tar -C "$TMPDIR" -czf "$TMPDIR/media_update.tar.gz" doc.txt
 rm -f "$TMPDIR/doc.txt"
 
-# p2（隱藏）：只放 tar.gz；不要把 flag.txt 直接放分割區！
+# Partition 2 (Hidden): only store the tar.gz
+# Do NOT put flag.txt directly into the partition!
 LOOP2=$(losetup -f --show --offset $((P2_START*SECTOR)) --sizelimit $((P2_SIZE*SECTOR)) "$IMG")
 mkfs.vfat -F 16 -n SECRET "$LOOP2" >/dev/null
 mount "$LOOP2" /mnt/ctf
-# 檔名做得普通一點
+# Use a normal-looking filename
 cp "$TMPDIR/media_update.tar.gz" /mnt/ctf/DCIM_0001.TGZ
 sync; umount /mnt/ctf; losetup -d "$LOOP2"; LOOP2=""
 
