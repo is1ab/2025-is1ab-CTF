@@ -74,11 +74,8 @@ with open(p, "r+b") as f:
 PY
 
 # Optional: subtle service note (no explicit signature bytes)
-cat > /mnt/ctf/DCIM/100CAM/REPAIR_NOTE.txt <<'TXT'
-[Camera Service Note]
-- PNG sample cannot be previewed on PC.
-- Header anomaly at the very start (first 8 bytes).
-- Compare with a valid PNG file signature and restore accordingly.
+cat > /mnt/ctf/DCIM/100CAM/NOTE.txt <<'TXT'
+I hidden flag here, You know it.
 TXT
 
 umount /mnt/ctf
