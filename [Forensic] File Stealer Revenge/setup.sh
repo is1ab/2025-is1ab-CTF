@@ -65,7 +65,6 @@ losetup -d "$LOOP1" ; LOOP1=""
 
 echo "[*] Formatting hidden partition (FAT16, 30MiB) and writing multiple images (including qrcode.png)"
 LOOP2=$(losetup -f --show --offset $((P2_START*SECTOR)) --sizelimit $((P2_SIZE*SECTOR)) "$IMG")
-dd if=/dev/urandom of="$LOOP2" bs=1M status=none
 mkfs.vfat -F 16 -n SECRET "$LOOP2" >/dev/null
 mount "$LOOP2" "$MNT"
 
