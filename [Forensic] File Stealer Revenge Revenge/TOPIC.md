@@ -15,7 +15,7 @@ You “found” another memory card on the street. The card clearly has partitio
 3. When a recovered file won’t open, inspect its header (first 8–16 bytes) and per-chunk structure against the format’s spec. A single wrong byte in the magic number/signature is enough to break parsing—repairing it may be all you need.
 
 
-flag: is1abCTF{carve_th3_truth_fr0m_raw}
+flag: is1abCTF{carve_th3_truth_from_raw}
 原始碼: 無
 題目檔案: file_stealer_revenge_revenge.img
 題目名稱: File Stealer Revenge Revenge
